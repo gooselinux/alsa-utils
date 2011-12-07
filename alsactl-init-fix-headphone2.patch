@@ -1,0 +1,27 @@
+From 2cbf39749cd71a2b892b6006ae69283576176d17 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Wed, 2 Sep 2009 14:31:49 +0200
+Subject: [PATCH] alsactl init: Fix typo "(" -> "{" in Headphone default rule
+
+Reported-by: Philipp Jocham <philipp.jocham@gmx.net>
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ alsactl/init/default |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/alsactl/init/default b/alsactl/init/default
+index 8653ec6..f2c0539 100644
+--- a/alsactl/init/default
++++ b/alsactl/init/default
+@@ -49,7 +49,7 @@ CTL{reset}="mixer"
+ CTL{name}="Headphone Playback Volume",PROGRAM!="__ctl_search",GOTO="headphone0_end"
+ # if master volume control is present, turn headphone volume to max
+ ENV{has_pmaster_vol}=="true",CTL{values}="0dB",RESULT=="0",GOTO="headphone0_end"
+-ENV{has_pmaster_vol}=="true",CTL{values)="100%",GOTO="headphone0_end"
++ENV{has_pmaster_vol}=="true",CTL{values}="100%",GOTO="headphone0_end"
+ CTL{values}="$env{pvolume}",RESULT!="0",CTL{values}="$env{ppercent}"
+ LABEL="headphone0_end"
+ CTL{name}="Headphone Playback Switch",PROGRAM=="__ctl_search", \
+-- 
+1.5.5.1
+
